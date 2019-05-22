@@ -1,14 +1,16 @@
+from webapp import app
+import os
+
+
 class Config:
 
     # Statement for enabling the development environment
     DEBUG = False
     TESTING = False
 
-    # Define the database - we are working with
-    # SQLite for this example
-    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(app.root_path, 'app.db')
-    # SQLALCHEMY_TRACK_MODIFICATIONS = False
-    # DATABASE_CONNECT_OPTIONS = {}
+    # SQLite database settings
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(app.root_path, 'app.db')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Application threads. A common general assumption is
     # using 2 per available processor cores - to handle
