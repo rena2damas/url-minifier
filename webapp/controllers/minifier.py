@@ -12,7 +12,7 @@ def shorten_route():
     data = request.json
 
     # Raise 400 if body not defined or 'url' not present
-    if not data.get('url'):
+    if not data or not data.get('url'):
         abort(HTTPStatus.BAD_REQUEST, 'Url not present')
 
     if data.get('shortcode'):
