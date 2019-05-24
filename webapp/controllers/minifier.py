@@ -95,7 +95,7 @@ def shortcode_stats_route(shortcode):
 
     data = dict(
         created=shortcode_.created.isoformat(timespec='milliseconds') + 'Z',
-        lastRedirect=shortcode_.last_redirect.isoformat(timespec='milliseconds') + 'Z',
+        lastRedirect=shortcode_.last_redirect.isoformat(timespec='milliseconds') + 'Z' if shortcode_.last_redirect else None,
         redirectCount=shortcode_.redirect_count
     )
 
