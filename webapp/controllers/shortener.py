@@ -5,10 +5,10 @@ from http import HTTPStatus
 import datetime
 import json
 
-minifier = Blueprint('minifier', __name__)
+shortener = Blueprint('shortener', __name__)
 
 
-@minifier.route('/shorten', methods=['POST'])
+@shortener.route('/shorten', methods=['POST'])
 def shorten_route():
     """
     Creates a new shortcode
@@ -54,7 +54,7 @@ def shorten_route():
 
     return json.dumps(dict(created_id=shortcode.id))
 
-@minifier.route('/<shortcode>')
+@shortener.route('/<shortcode>')
 def shortcode_route(shortcode):
     """
     Redirect to :shortcode corresponding url after incrementing attribute 'redirect_count'
@@ -77,7 +77,7 @@ def shortcode_route(shortcode):
 
     return redirect(shortcode_.url)\
 
-@minifier.route('/<shortcode>/stats')
+@shortener.route('/<shortcode>/stats')
 def shortcode_stats_route(shortcode):
     """
     Display attributes for the corresponding :shortcode

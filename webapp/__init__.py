@@ -20,7 +20,7 @@ def create_app(env='default'):
     """Create a new app"""
 
     # The WSGI application object
-    app = Flask("URL Minifier")
+    app = Flask("URL Shortener")
 
     # Loading configurations
     env = os.getenv('FLASK_CONFIGURATION', env)
@@ -30,8 +30,8 @@ def create_app(env='default'):
     db.init_app(app)
 
     # Importing and registering blueprints
-    from webapp.controllers.minifier import minifier
-    app.register_blueprint(minifier)
+    from webapp.controllers.shortener import shortener
+    app.register_blueprint(shortener)
 
     @app.after_request
     def add_header(response):
