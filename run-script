@@ -1,0 +1,11 @@
+#!/bin/bash
+
+eval "$(conda shell.bash hook)"
+
+conda create -yp py3.7 python=3
+conda activate py3.7/
+
+pip install -r requirements.txt
+
+pytest webapp/tests/ -v
+python run.py
