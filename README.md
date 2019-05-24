@@ -28,4 +28,7 @@ A Flask Web application for shortening URL's
 3. Check it running on ```http://localhost:5000```
 
 ### Tests
-Run the test 
+Run the test suite:
+```sh
+pytest webapp/tests/ -v
+```
