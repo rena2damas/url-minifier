@@ -10,7 +10,7 @@ class Shortcode(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     shortcode = db.Column(db.String(6), nullable=False, unique=True)
     url = db.Column(db.String(2000), nullable=False)
-    created = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+    created = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow())
     last_redirect = db.Column(db.DateTime, nullable=True)
     redirect_count = db.Column(db.Integer, nullable=False, default=0)
 
@@ -18,7 +18,7 @@ class Shortcode(db.Model):
     _SHORTCODE_LENGTH = 6
 
     @classmethod
-    def valid(cls, code):
+    def is_valid(cls, code):
         """
         Checks whether :code is valid
         A valid :code has a length of 6 characters and

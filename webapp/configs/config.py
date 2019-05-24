@@ -1,4 +1,4 @@
-from webapp import app
+from webapp import root_path
 import os
 
 
@@ -7,10 +7,6 @@ class Config:
     # Statement for enabling the development environment
     DEBUG = False
     TESTING = False
-
-    # SQLite database settings
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(app.root_path, 'app.db')
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Application threads. A common general assumption is
     # using 2 per available processor cores - to handle
@@ -36,14 +32,26 @@ class ProductionConfig(Config):
     ENV = 'production'
     LOG_LEVEL = 'INFO'
 
+    # SQLite database production settings
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(root_path, 'prod.db')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
 
 class DevelopmentConfig(Config):
     ENV = 'development'
     DEBUG = True
     LOG_LEVEL = 'INFO'
 
+    # SQLite database development settings
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(root_path, 'dev.db')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
 
 class TestingConfig(Config):
     ENV = 'testing'
     TESTING = True
     LOG_LEVEL = 'DEBUG'
+
+    # Suppressing warnings
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_BINDS = None

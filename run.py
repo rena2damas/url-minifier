@@ -1,8 +1,12 @@
-from webapp import app, db
+from webapp import create_app, db
 
 if __name__ == "__main__":
-    # Create all required tables
-    db.create_all()
+    # Create the Flask application
+    app = create_app()
 
-    # Run the WSGI application
+    # Create all required tables
+    with app.app_context():
+        db.create_all()
+
+    # Run the WSGI server application
     app.run()
