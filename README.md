@@ -12,6 +12,20 @@ A Flask Web application for shortening URL's
    ```sh
    pip install -r requirements.txt
    ```
+   
+   or
+   
+   Simply run:
+    ```sh
+    ./run-script
+    ```
+    It will automatically setup a python 3 environment with required
+    dependencies, run the test suite and launch the server application.
+    As a pre-requirement, ```conda``` must be installed and must be included
+    in the system ```PATH```.
+    
+    Note: make sure to set ```+x``` permissions on the file before running it.
+   
 
 ### Usage
 
